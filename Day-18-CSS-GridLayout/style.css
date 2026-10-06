@@ -1,0 +1,19 @@
+.main-container{
+    background-color: darkslateblue;
+    display: grid;
+    height: auto;
+    max-width: 1500px;
+   
+
+}
+.submain{
+    height: 800px;
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.box{
+    background-color: red;
+    height: 300px;
+    width: 400px;
+}
