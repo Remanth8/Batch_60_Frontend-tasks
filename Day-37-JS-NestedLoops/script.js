@@ -1,127 +1,181 @@
-//Sum of Prime Numbers
-// let sum = 0;
+// Sum of Prime Numbers
 
-// for (let n = 20; n <= 150; n++) {
-//     let count = 0;
+let sum = 0;
 
-//     for (let i = 1; i <= n; i++) {
-//         if (n % i == 0) {
-//             count++;
-//         }
-//     }
+for (let n = 20; n <= 150; n++) {
 
-//     if (count == 2) {
-//         sum = sum + n;
-//     }
-// }
+    let factors = 0;
 
-// console.log("Sum =", sum);
+    for (let i = 1; i <= n; i++) {
 
-//Average of Perfect Numbers
-// let sum = 0;
-// let count = 0;
+        if (n % i === 0) {
+            factors = factors + 1;
+        }
+    }
 
-// for (let n = 1; n <= 1000; n++) {
-//     let factorSum = 0;
+    if (factors === 2) {
+        sum += n;
+    }
+}
 
-//     for (let i = 1; i < n; i++) {
-//         if (n % i == 0) {
-//             factorSum = factorSum + i;
-//         }
-//     }
+console.log("Prime Numbers Sum =", sum);
 
-//     if (factorSum == n) {
-//         console.log(n);
-//         sum = sum + n;
-//         count++;
-//     }
-// }
 
-// let average = sum / count;
+// Average of Perfect Numbers
 
-// console.log("Average =", average);
+let total = 0;
+let perfectCount = 0;
+
+for (let n = 1; n <= 1000; n++) {
+
+    let totalFactors = 0;
+
+    for (let i = 1; i < n; i++) {
+
+        if (n % i === 0) {
+            totalFactors += i;
+        }
+    }
+
+    if (totalFactors === n) {
+
+        console.log("Perfect Number =", n);
+
+        total += n;
+        perfectCount++;
+    }
+}
+
+let avg = total / perfectCount;
+
+console.log("Average =", avg);
+
 
 // Leap Years in a Range
-// for (let year = 1900; year <= 2026; year++) {
-//     if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
-//         console.log(year);
-//     }
-// }
 
-//Palindrome Numbers
-//  let i=100
-// while(i<=500){
-//       rev=0
-//       k=i
-//       while(k>0){
-//          rev=rev*10+(k%10)
-//          k=parseInt(k/10)
-//       }
-//     if (rev==i){
-//      console.log(rev,"palidrome")
-//  }
-//  i=i+1
-// }
+for (let year = 1900; year <= 2026; year++) {
 
-//Digit Sum = 10
-//  let i=1
-// while(i<=850){
-//     o=i
-//     sum=0
-//     while(o>0){
-//         sum+=(o%10)
-//         o=parseInt(o/10)
-//     }
-//     if (sum==10){
-//         console.log(i)
-//     }
-//     i++
-// }
+    let leap = false;
 
-//Pairs with Target Sum
-// for (let a = 1; a <= 50; a++) {
-//     for (let b = a; b <= 50; b++) {
-//         if (a + b == 30) {
-//             console.log(a, b);
-//         }
-//     }
-// }
+    if (year % 400 === 0) {
+        leap = true;
+    }
+    else if (year % 4 === 0 && year % 100 !== 0) {
+        leap = true;
+    }
 
-//Exactly 3 Factors
+    if (leap) {
+        console.log("Leap Year =", year);
+    }
+}
 
-// for (let n = 10; n <= 300; n++) {
-//     let count = 0;
 
-//     for (let i = 1; i <= n; i++) {
-//         if (n % i == 0) {
-//             count++;
-//         }
-//     }
+// Palindrome Numbers
 
-//     if (count == 3) {
-//         console.log(n);
-//     }
-// }
+let num = 100;
 
-//Maximum Factors
+while (num <= 500) {
 
-// let max = 0;
-// let number = 0;
+    let original = num;
+    let reverse = 0;
 
-// for (let n = 50; n <= 150; n++) {
-//     let count = 0;
+    while (num > 0) {
 
-//     for (let i = 1; i <= n; i++) {
-//         if (n % i == 0) {
-//             count++;
-//         }
-//     }
+        let digit = num % 10;
 
-//     if (count > max) {
-//         max = count;
-//         number = n;
-//     }
-// }
+        reverse = reverse * 10 + digit;
 
-// console.log("Number =", number);
-// console.log("Factors =", max);
+        num = parseInt(num / 10);
+    }
+
+    if (reverse === original) {
+        console.log(original, "is Palindrome");
+    }
+
+    num = original + 1;
+}
+
+
+// Digit Sum = 10
+
+let number = 1;
+
+while (number <= 850) {
+
+    let temp = number;
+    let digitSum = 0;
+
+    while (temp > 0) {
+
+        digitSum = digitSum + (temp % 10);
+
+        temp = parseInt(temp / 10);
+    }
+
+    if (digitSum === 10) {
+        console.log("Digit Sum 10 =", number);
+    }
+
+    number++;
+}
+
+
+// Pairs with Target Sum
+
+for (let first = 1; first <= 50; first++) {
+
+    for (let second = first; second <= 50; second++) {
+
+        let total = first + second;
+
+        if (total === 30) {
+            console.log(first, second);
+        }
+    }
+}
+
+
+// Exactly 3 Factors
+
+for (let number = 10; number <= 300; number++) {
+
+    let factors = 0;
+
+    for (let divisor = 1; divisor <= number; divisor++) {
+
+        if (number % divisor === 0) {
+            factors++;
+        }
+    }
+
+    if (factors === 3) {
+        console.log("Exactly 3 Factors =", number);
+    }
+}
+
+
+// Maximum Factors
+
+let maximum = 0;
+let maximumNumber = 0;
+
+for (let number = 50; number <= 150; number++) {
+
+    let factors = 0;
+
+    for (let divisor = 1; divisor <= number; divisor++) {
+
+        if (number % divisor === 0) {
+            factors++;
+        }
+    }
+
+    if (factors > maximum) {
+
+        maximum = factors;
+        maximumNumber = number;
+    }
+}
+
+console.log("Number =", maximumNumber);
+console.log("Maximum Factors =", maximum);
